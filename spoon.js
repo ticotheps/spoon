@@ -29,7 +29,7 @@ const main = async () => {
 	const forkedRepos = await fetchRepos();
 	console.log('\nFetch complete.');
 	console.log(
-		`\nNumber of Forked Repos: ${forkedRepos.length}\n\nTo confirm that this script correctly duplicated all of your forked repos, please search your GitHub repositories list for all repos with '-bak' added to the ends of their names.`
+		`\nNumber of Forked Repos: ${forkedRepos.length}\n\nTo confirm that this script correctly duplicated all of your forked repos, please ensure that each of those repos have no current open issues or pull requests (go merge any unmerged PRs!) and try running the scripts again.`
 	);
 	if (forkedRepos.length === 0) {
 		console.log("\nYou currently have no forked repos, here's a pony!");
@@ -46,7 +46,8 @@ const main = async () => {
 		console.log('New repos complete.');
 		console.log('Importing data from forks to new repos...');
 		await importData(forkedRepos);
-		console.log('Import complete.');
+    console.log('Import complete.');
+    console.log(`To confirm that this script correctly duplicated all of your forked repos properly, please search your repositories list for all repos with '-bak' added to the ends of their names.`)
 	}
 };
 

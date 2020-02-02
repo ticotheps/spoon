@@ -63,3 +63,6 @@ typings/
 # user specific back ups
 backups.json
 filteredRepos.json
+
+# VScode settings
+.vscode/

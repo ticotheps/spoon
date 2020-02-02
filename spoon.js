@@ -29,7 +29,7 @@ const main = async () => {
 	const forkedRepos = await fetchRepos();
 	console.log('\nFetch complete.');
 	console.log(
-		`\nNumber of Forked Repos: ${forkedRepos.length}\n\nTo confirm that this script correctly duplicated all of your forked repos, please ensure that each of those repos have no current open issues or pull requests (go merge any unmerged PRs!) and try running the scripts again.`
+		`\nNumber of Forked Repos: ${forkedRepos.length}\n\nIf you feel that this number is incorrect, please check the following before running the script again:\n---(a) ensure that each of your forked repos have NO open issues on them (go merge any unmerged PRs!)\n---(b) verify that the GitHub API key you are using is the correct one.`
 	);
 	if (forkedRepos.length === 0) {
 		console.log("\nYou currently have no forked repos, here's a pony!");

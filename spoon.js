@@ -1,4 +1,9 @@
 /*
+***NOTE: This script has only been tested on cases where the total number of
+forked repos is < 100 forks. If you are attempting to run this script on more
+than 100 forks, please be aware that we, the creators, are not responsible for
+any errors that result from altering this script.
+
 (i)   This script has been designed to use your provided GitHub API key & your
 GitHub handle to procedurally replace each of your forked repositories with
 fresh copies of those repos that you will personally own.
@@ -38,7 +43,7 @@ const axios = require('axios');
 const bluebird = require('bluebird');
 
 const token = process.env.GHKEY; // YOUR API KEY HERE.
-const user = 'fake-user'; // YOUR GITHUB HANDLE HERE
+const user = 'ticotheps'; // YOUR GITHUB HANDLE HERE
 
 axios.interceptors.request.use(config => {
 	config.headers.authorization = `bearer ${token}`;
@@ -51,7 +56,7 @@ const main = async () => {
 	const forkedRepos = await fetchRepos();
 	console.log('\nFetch complete.');
 	console.log(
-		`\nNumber of Forked Repos: ${forkedRepos.length}\n\nIf you feel that this number is incorrect, please check the following before running the script again:\n---(a) take care of any unmerged PRs in your forked repos!\n---(b) verify that the GitHub API key you are using is correct.`
+		`\nNumber of Forked Repos to 'Unfork': ${forkedRepos.length}\n\nIf you feel that this number is incorrect, please check the following before running the script again:\n---(a) take care of any unmerged PRs in your forked repos!\n---(b) verify that the GitHub API key you are using is correct.`
 	);
 	if (forkedRepos.length === 0) {
 		console.log("\nYou currently have no forked repos, here's a pony!");
